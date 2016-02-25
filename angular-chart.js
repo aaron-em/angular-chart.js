@@ -106,10 +106,12 @@
           chartColours: '=?',
           chartLegend: '@',
           chartClick: '=?',
-          chartHover: '=?'
+          chartHover: '=?',
+          chartWatchShallow: '=?'
         },
         link: function (scope, elem/*, attrs */) {
           var chart, container = document.createElement('div');
+          var watchDeeply = chart.watchShallow || true;
           container.className = 'chart-container';
           elem.replaceWith(container);
           container.appendChild(elem[0]);
@@ -147,7 +149,7 @@
             }
 
             createChart(chartType);
-          }, true);
+          }, watchDeeply);
 
           scope.$watch('series', resetChart, true);
           scope.$watch('labels', resetChart, true);
